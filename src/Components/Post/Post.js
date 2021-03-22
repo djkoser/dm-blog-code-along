@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import posts from "./../../post_data.json";
 import "./Post.css";
 
-class Post extends Component {
+export default class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,8 +12,8 @@ class Post extends Component {
   }
   componentDidMount() {
     // This is where you would make an axios call to a server in a fullstack application
-    // but for today we'll be just be filtering an array of dummy data
-    let post = posts.find(post => post.id === this.props.match.params.id);
+    // but for today we'll be just be filter over an array of dummy data
+    let post = posts.find(post => post.id === parseInt(this.props.match.params.id));
     this.setState({
       title: post.title,
       content: post.content
@@ -27,7 +27,5 @@ class Post extends Component {
         <p>{content}</p>
       </div>
     );
-  }
-}
-
-export default Post;
+  };
+};
